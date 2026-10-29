@@ -4,11 +4,61 @@
   gap: 2rem;
   max-width: 48rem;
   margin: 0 auto;
-  padding: 4rem 1.5rem;
+  padding: 4rem var(--space-page-inline);
 }
+.intro { display: flex; flex-direction: column; gap: 0.5rem; }
+.intro p, .hint, .example p { color: var(--color-muted); }
+.pills { display: flex; flex-wrap: wrap; gap: 2rem; }
+.example { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; }
+.example h2 { font-size: 1rem; font-weight: 600; }
+.example p, .hint { font-size: 0.875rem; }
 
-.pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+.toggle {
+  position: relative;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+.toggle input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+.switchTrack {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 26px;
+  padding: 3px;
+  border: 1px solid var(--color-muted);
+  border-radius: var(--radius-pill);
+  background: var(--color-muted);
+  transition: background var(--motion-duration), border-color var(--motion-duration);
+}
+.switchTrack::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  transition: transform var(--motion-duration);
+}
+.toggle input:checked + .switchTrack {
+  background: var(--color-pink);
+  border-color: var(--color-pink);
+}
+.toggle input:checked + .switchTrack::before { transform: translateX(18px); }
+.toggle input:focus-visible + .switchTrack {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .switchTrack, .switchTrack::before { transition: none; }
 }

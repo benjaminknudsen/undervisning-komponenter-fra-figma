@@ -1,0 +1,57 @@
+/* Figma primitives (3:62) and bound variables (3:28, 3:24).
+   Scoped to the new section and dialogs to preserve the existing showcase. */
+.tokens {
+  --border-radius-md: 24px;
+  --border-radius-full: 9999px;
+  --btn-height-md: 46px;
+  --gap-md: 12px;
+  --padding-sm: 20px;
+  --padding-lg: 36px;
+  --font-family-primary: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semi-bold: 600;
+  --font-size-sm: 16px;
+  --font-size-md: 18px;
+  --font-size-lg: 32px;
+  --color-primary: #ff3d8b;
+  --color-secondary: #473dff;
+  --color-neutral-white: #fff;
+  --color-neutral-black: #000;
+  --color-neutral-grey-900: #16161a;
+  --color-neutral-grey-800: #55554f;
+  --color-neutral-grey-200: #d6d6d0;
+  font-family: var(--font-family-primary);
+}
+.section { margin-top: 3rem; padding-top: 3rem; border-top: 1px solid var(--color-neutral-grey-200); display: flex; flex-direction: column; gap: 2rem; color: var(--color-neutral-grey-900); }
+.section > h2 { font-size: var(--font-size-lg); line-height: 1.2; font-weight: var(--font-weight-semi-bold); }
+.pillGroups, .states { display: flex; flex-wrap: wrap; gap: 24px; }
+.pillGroups { gap: 36px; }
+.group, .example { display: flex; flex-direction: column; align-items: flex-start; gap: var(--gap-md); }
+.group h3 { font-size: var(--font-size-md); font-weight: var(--font-weight-medium); }
+.example > span { font-size: 14px; color: var(--color-neutral-grey-800); }
+.pill { display: inline-flex; align-items: center; justify-content: center; height: var(--btn-height-md); padding: 0 var(--padding-sm); border: 1px solid var(--color-neutral-grey-200); border-radius: var(--border-radius-full); background: var(--color-neutral-white); color: var(--color-primary); font: var(--font-weight-medium) var(--font-size-md)/normal var(--font-family-primary); letter-spacing: -0.18px; cursor: pointer; }
+.pill[data-type="Secondary"] { color: var(--color-neutral-grey-900); }
+.pill:hover, .pill[data-state="Hover"] { border-color: var(--color-primary); }
+.pill[data-type="Secondary"]:hover, .pill[data-type="Secondary"][data-state="Hover"] { border-color: var(--color-secondary); color: var(--color-secondary); }
+.pill:focus-visible, .open:focus-visible, .close:focus-visible, .toggle input:focus-visible { outline: 3px solid var(--color-secondary); outline-offset: 4px; }
+.toggle { display: flex; align-items: center; gap: var(--gap-md); min-height: 44px; cursor: pointer; }
+.toggle input { accent-color: var(--color-secondary); width: 18px; height: 18px; }
+.card { background: var(--color-neutral-white); border: 0; max-width: 100%; height: fit-content; }
+.philip { width: 448px; padding: 32px; border-radius: 16px; color: var(--color-neutral-black); --card-gap: 14px; }
+.hick { width: 500px; padding: var(--padding-lg); border-radius: var(--border-radius-md); color: var(--color-neutral-grey-900); box-shadow: 0 20px 48px -12px rgb(0 0 0 / 12%); --card-gap: var(--gap-md); }
+.content { position: relative; display: flex; flex-direction: column; align-items: flex-start; gap: var(--card-gap); overflow-wrap: anywhere; }
+.title, .description { width: 100%; }
+.philip .title { font-size: 28px; font-weight: 800; line-height: normal; }
+.philip .description { font-size: 14px; font-weight: var(--font-weight-regular); line-height: normal; }
+.hick .title { font-size: var(--font-size-lg); font-weight: var(--font-weight-semi-bold); line-height: normal; letter-spacing: -0.64px; }
+.hick .description { font-size: var(--font-size-sm); font-weight: var(--font-weight-regular); line-height: 25px; color: var(--color-neutral-grey-800); }
+.line { flex-shrink: 0; width: 40px; height: 5px; border-radius: 3px; background: var(--color-primary); }
+.philipLine { position: relative; flex-shrink: 0; width: 48px; height: 0; }
+.philipLine img { position: absolute; top: -4px; left: 0; display: block; }
+.preview { position: relative; }
+.open { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; border-radius: inherit; background: transparent; cursor: pointer; }
+.modal { position: fixed; inset: 0; margin: auto; max-width: calc(100vw - 32px); max-height: calc(100dvh - 32px); overflow: auto; }
+.modal::backdrop { background: rgb(0 0 0 / 65%); }
+.close { position: absolute; right: -24px; top: -24px; width: 32px; height: 32px; border: 0; border-radius: var(--border-radius-full); background: var(--color-neutral-white); color: var(--color-neutral-black); font-size: 24px; line-height: 1; cursor: pointer; }
+.close:hover { background: var(--color-neutral-grey-200); }

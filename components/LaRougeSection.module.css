@@ -1,0 +1,36 @@
+.section {
+  /* Variables returned by Figma for instance 30:464. */
+  --la-rouge-morkbrun: #5c4a43;
+  --la-rouge-brun: #a89585;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--la-rouge-brun);
+}
+.section > h2 { margin-bottom: 2rem; color: var(--la-rouge-morkbrun); }
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3.8px;
+  width: 185.125px;
+  max-width: 100%;
+  min-height: 1000.65px;
+  background: #fff;
+  color: #000;
+}
+.photo { position: relative; width: 100%; aspect-ratio: 185.125 / 253.65; border-bottom: 0.95px solid rgb(0 0 0 / 10%); }
+.photo > img { object-fit: cover; }
+.heart { position: absolute; top: 3.325px; right: 4px; width: 25px; height: 26px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.heart img { display: block; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); transition: opacity 300ms ease-out; pointer-events: none; }
+.heartActive { opacity: 0; }
+.heart:hover .heartActive, .heart:focus-visible .heartActive, .heart[aria-pressed="true"] .heartActive { opacity: 1; }
+.heart:hover .heartDefault, .heart:focus-visible .heartDefault, .heart[aria-pressed="true"] .heartDefault { opacity: 0; }
+.heart:focus-visible { outline: 2px solid var(--la-rouge-morkbrun); outline-offset: 3px; border-radius: 3px; }
+@media (prefers-reduced-motion: reduce) { .heart img { transition: none; } }
+.details { display: flex; flex-direction: column; align-items: flex-start; gap: 7.6px; width: 100%; padding-left: 7.6px; line-height: normal; font-weight: 500; }
+.brand { font-size: 12px; }
+.details h3 { font-size: 14px; font-weight: 500; }
+.price { font-family: var(--font-inter), sans-serif; font-size: 12px; font-weight: 700; }
+.bag { position: absolute; top: calc(91.43% - 0.48px); left: 159.017px; }
+.bag img { display: block; }

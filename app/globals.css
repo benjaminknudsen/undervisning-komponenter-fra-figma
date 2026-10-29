@@ -1,34 +1,37 @@
-/*
- * Design tokens from Figma
- *
- * Add your Figma variables here as custom properties (step 1.3).
- * - Name: lowercase, and "/" and spaces become "-"
- *   Color/Neutral/Grey 900 -> --color-neutral-grey-900
- * - Number variables get a unit: 36 -> 36px
- * - Font weights become numbers: Regular -> 400, Medium -> 500, Semi Bold -> 600
- */
+/* Temporary design tokens based on the screenshot description, not measured Figma values. */
 :root {
-  /* Color */
-
-  /* Typography – the font itself is loaded in app/layout.js */
+  --color-surface: #fff;
+  --color-page: #f5f5f8;
+  --color-text: #252532;
+  --color-muted: #666674;
+  --color-pink: #c52670;
+  --color-purple: #5c48c7;
+  --color-focus: #5c48c7;
   --font-family-primary: var(--font-inter), sans-serif;
-
-  /* Spacing: gaps and paddings */
-
-  /* Sizes */
-
-  /* Border radius */
+  --space-pill-block: 8px;
+  --space-pill-inline: 16px;
+  --space-modal-padding: 32px;
+  --space-modal-gap: 14px;
+  --space-page-inline: 24px;
+  --modal-width: 448px;
+  /* Modal typography is provisional until the Figma values can be read. */
+  --modal-color-text: #000;
+  --modal-title-size: 32px;
+  --modal-title-weight: 700;
+  --modal-description-size: 16px;
+  --modal-backdrop: rgb(0 0 0 / 32%);
+  --divider-width: 40px;
+  --radius-pill: 999px;
+  --radius-modal: 16px;
+  --motion-duration: 180ms;
 }
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
+* { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   min-height: 100vh;
+  background: var(--color-page);
+  color: var(--color-text);
   font-family: var(--font-family-primary);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
+body:has(dialog[open]) { overflow: hidden; }

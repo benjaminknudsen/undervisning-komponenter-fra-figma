@@ -1,12 +1,94 @@
-/* Figma: the component "Modal". Use your tokens with var(). */
-
-/* The dialog itself */
-.modal {
-  margin: auto; /* The reset in globals.css removes the centering of <dialog>, so add it back */
+.card {
+  width: min(var(--modal-width), calc(100vw - 2 * var(--space-page-inline)));
+  height: fit-content;
+  max-width: 100%;
+  padding: var(--space-modal-padding);
+  border: 0;
+  border-radius: var(--radius-modal);
+  background: var(--color-surface);
+  color: var(--modal-color-text);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 12%);
 }
-
-/* Auto layout -> flexbox (step 1.3) */
-
-/* Title and text (step 1.3) and the separator (step 1.4) */
-
-/* Smart Animate -> transition (extra 3) */
+.preview { position: relative; }
+.open {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  border-radius: inherit;
+  background: transparent;
+  cursor: pointer;
+}
+.open:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 4px;
+}
+.modal {
+  inset: 0;
+  margin: auto;
+  max-height: calc(100dvh - 2 * var(--space-page-inline));
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--motion-duration), transform var(--motion-duration),
+    display var(--motion-duration) allow-discrete, overlay var(--motion-duration) allow-discrete;
+}
+.modal[open] { opacity: 1; transform: translateY(0); }
+.modal::backdrop {
+  background: var(--modal-backdrop);
+  opacity: 0;
+  transition: opacity var(--motion-duration), display var(--motion-duration) allow-discrete,
+    overlay var(--motion-duration) allow-discrete;
+}
+.modal[open]::backdrop { opacity: 1; }
+@starting-style {
+  .modal[open] { opacity: 0; transform: translateY(8px); }
+  .modal[open]::backdrop { opacity: 0; }
+}
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-modal-gap);
+  overflow-wrap: anywhere;
+}
+.line {
+  width: var(--divider-width);
+  height: 3px;
+  border-radius: var(--radius-pill);
+  background: var(--color-pink);
+}
+.title {
+  padding-right: 1.5rem;
+  font-size: var(--modal-title-size);
+  line-height: 1.2;
+  font-weight: var(--modal-title-weight);
+}
+.description {
+  font-size: var(--modal-description-size);
+  line-height: 1.5;
+  font-weight: 400;
+}
+.close {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: var(--color-surface);
+  color: var(--color-muted);
+  font: inherit;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.close:hover { background: var(--color-page); color: var(--color-text); }
+.close:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .modal, .modal::backdrop { transition: none; transform: none; }
+}

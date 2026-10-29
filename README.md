@@ -1,22 +1,32 @@
 # Pill og modal: fra Figma til React/Next.js
 
-Starter for Dynamic User Interface, 29 October 2026. You build a pill that opens a modal, first by hand from Dev Mode and then with an AI agent through the Figma MCP server.
+Komponentopgave fra undervisningen 29. oktober 2026.
 
-## Getting started
+## Start
 
 ```bash
-npm i
+npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) in your browser.
+Åbn den lokale adresse fra terminalen. `npm run lint` kontrollerer koden, og `npm run build` laver et produktionsbuild. Starterens Inter-font er bevaret; build kan kræve adgang til Google Fonts.
 
-## Files
+## Komponenter og Figma
 
-- `app/globals.css` – design tokens from your Figma variables
-- `components/Pill.js` – the pill as a `<button>`
-- `components/Modal.js` – the modal as a `<dialog>`
-- `components/PillModal.js` – puts Pill and Modal together (you create it in step 1.2)
-- `app/page.js` – the page that shows the components
+- `components/Pill.js` er en selvstændig `<button>`. Figma **Type** bliver `type="primary" | "secondary"`, teksten bliver `label`, og **State=Hover** bliver CSS `:hover`. Begge varianter har synlig `:focus-visible`. Pills åbner ikke modalen.
+- `components/Modal.js` viser et kort på siden og en native `<dialog>`. Klik, Enter eller mellemrum på kortets knap åbner dialogen. Escape, luk-knappen og klik udenfor lukker; fokus returnerer til kortets knap. `showModal()` gør baggrunden inaktiv.
+- Kort og dialog bruger samme indholds-rendering og CSS-klasse, så bredde, padding, typografi, afrunding og skygge er ens. Luk-knappen i dialogen er placeret uden for indholdets layout.
+- `app/page.js` viser begge Pill-varianter, checkbox og kort. Checkboxen **Vis separator-linje** styrer `showLine` med `useState`. Samme boolean gælder kort og dialog: Figma **Show line** → React `showLine`.
+- Figma Auto Layout bliver Flexbox med `gap` og padding. Prototypeinteraktionen bliver event handlers og state. CSS-transitions ved åbning/lukning respekterer `prefers-reduced-motion`.
 
-The [solution branch](https://github.com/cederdorff/nextjs-figma-pill-modal/tree/solution) in the original repo has one commit per step.
+## Designværdier
+
+Modalens 448 px bredde, 32 px padding og 14 px gap følger beskrivelsen. Bredden tilpasses skærmen, og højt indhold kan scrolles i dialogen. Farver, 16 px radius, 32 px/700 overskrift, 16 px beskrivelse, 8/16 px pill-padding, 40 × 3 px divider og 180 ms transition er foreløbige valg fra beskrivelsen. De er ikke verificeret mod Figma MCP. Tokens findes i `app/globals.css` og styling i CSS Modules.
+
+## Kontrol
+
+1. Hover over begge pills, og kontrollér synligt fokus med Tab/Shift+Tab. Klik på pills skal ikke åbne dialogen.
+2. Slå checkboxen til/fra med mus og mellemrum. Kontrollér linjen på kortet og i dialogen.
+3. Klik på kortet, eller fokusér det med Tab og åbn med Enter/mellemrum. Kontrollér samme størrelse og indhold, centreret dialog og mørk baggrund.
+4. Klik inde i dialogen skal ikke lukke. Test Escape, kryds og klik udenfor samt fokusretur til kortet.
+5. Kontrollér mobilbredde, tastaturnavigation, scroll ved lav skærmhøjde og reduceret bevægelse.
