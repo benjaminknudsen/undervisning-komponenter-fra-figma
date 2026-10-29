@@ -1,0 +1,14 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 48rem;
+  margin: 0 auto;
+  padding: 4rem 1.5rem;
+}
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}

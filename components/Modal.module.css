@@ -1,0 +1,12 @@
+/* Figma: the component "Modal". Use your tokens with var(). */
+
+/* The dialog itself */
+.modal {
+  margin: auto; /* The reset in globals.css removes the centering of <dialog>, so add it back */
+}
+
+/* Auto layout -> flexbox (step 1.3) */
+
+/* Title and text (step 1.3) and the separator (step 1.4) */
+
+/* Smart Animate -> transition (extra 3) */

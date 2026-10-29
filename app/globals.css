@@ -1,0 +1,34 @@
+/*
+ * Design tokens from Figma
+ *
+ * Add your Figma variables here as custom properties (step 1.3).
+ * - Name: lowercase, and "/" and spaces become "-"
+ *   Color/Neutral/Grey 900 -> --color-neutral-grey-900
+ * - Number variables get a unit: 36 -> 36px
+ * - Font weights become numbers: Regular -> 400, Medium -> 500, Semi Bold -> 600
+ */
+:root {
+  /* Color */
+
+  /* Typography – the font itself is loaded in app/layout.js */
+  --font-family-primary: var(--font-inter), sans-serif;
+
+  /* Spacing: gaps and paddings */
+
+  /* Sizes */
+
+  /* Border radius */
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-family-primary);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
